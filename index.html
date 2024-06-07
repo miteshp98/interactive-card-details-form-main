@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-desktop">
+      <img src="images/bg-main-desktop.png" alt="" />
+    </div>
+    <div class="bg-mobile">
+      <img src="images/bg-main-mobile.png" alt="" />
+    </div>
+    <main>
+      <section>
+        <div class="container">
+          <div class="card-wrap">
+            <div class="card-front">
+              <img
+                src="images/bg-card-front.png"
+                alt="cardfront"
+                class="card-front-img"
+              />
+              <img
+                src="images/card-logo.svg"
+                alt=""
+                class="card-company-logo"
+              />
+              <h1 class="card-number">1234 5678 9101 1213</h1>
+              <p class="card-holder-name">Lolipop Gol</p>
+              <p class="expiry-date">00/00</p>
+            </div>
+
+            <div class="card-back">
+              <img src="images/bg-card-back.png" alt="" />
+              <p class="cvc-number">000</p>
+            </div>
+          </div>
+
+          <div class="card-detail-form">
+            <form action="">
+              <div class="card-form">
+                <label for="cardholdername" class="name-label"
+                  >cardholder name</label
+                >
+                <input
+                  type="text"
+                  name="cardholdername"
+                  id="cardholdername"
+                  placeholder="e.g. Jane Applessed"
+                />
+                <label for="cardnumber" class="number-label">card number</label>
+                <input
+                  type="number"
+                  name="cardnumber"
+                  id="cardnumber"
+                  placeholder="e.g. 1234 5678 9123 0000"
+                />
+
+                <div class="wrap">
+                  <div class="exp-date">
+                    <label for="card-expiry">exp. date (mm/yy)</label>
+                    <div class="exp-input">
+                      <input
+                        type="number"
+                        name="month"
+                        id="exp-month"
+                        placeholder="MM"
+                      />
+                      <input
+                        type="number"
+                        name="year"
+                        id="exp-year"
+                        placeholder="YY"
+                      />
+                    </div>
+                  </div>
+                  <div class="cvc-wrap">
+                    <label for="cvcnumber">cvc</label>
+                    <input
+                      type="number"
+                      name="cvcnumber"
+                      id="cvcnumber"
+                      placeholder="e.g. 123"
+                    />
+                  </div>
+                </div>
+                <button type="submit" class="submit-btn">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
