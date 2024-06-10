@@ -39,9 +39,13 @@
                 alt=""
                 class="card-company-logo"
               />
-              <h1 class="card-number">1234 5678 9101 1213</h1>
-              <p class="card-holder-name">Lolipop Gol</p>
-              <p class="expiry-date">00/00</p>
+              <h1 class="card-number">0000 0000 0000 0000</h1>
+              <p class="card-holder-name">Jane Appelessed</p>
+              <p class="expiry-date">
+                <span class="card-month">00</span>/<span class="card-year"
+                  >00</span
+                >
+              </p>
             </div>
 
             <div class="card-back">
@@ -53,57 +57,79 @@
           <div class="card-detail-form">
             <form action="">
               <div class="card-form">
-                <label for="cardholdername" class="name-label"
-                  >cardholder name</label
-                >
-                <input
-                  type="text"
-                  name="cardholdername"
-                  id="cardholdername"
-                  placeholder="e.g. Jane Applessed"
-                />
-                <label for="cardnumber" class="number-label">card number</label>
-                <input
-                  type="number"
-                  name="cardnumber"
-                  id="cardnumber"
-                  placeholder="e.g. 1234 5678 9123 0000"
-                />
+                <div class="card-name-num-wrap">
+                  <label for="cardholdername" class="name-label"
+                    >cardholder name</label
+                  >
+                  <input
+                    type="text"
+                    name="cardholdername"
+                    id="cardholdername"
+                    placeholder="e.g. Jane Applessed"
+                  />
+                  <p class="error name-error"></p>
+                </div>
+                <div class="card-name-num-wrap">
+                  <label for="cardnumber" class="number-label"
+                    >card number</label
+                  >
+                  <input
+                    type="text"
+                    name="cardnumber"
+                    id="cardnumber"
+                    placeholder="e.g. 1234 5678 9123 0000"
+                    maxlength="19"
+                  />
+                  <p class="error card-number-error"></p>
+                </div>
 
                 <div class="wrap">
                   <div class="exp-date">
                     <label for="card-expiry">exp. date (mm/yy)</label>
                     <div class="exp-input">
                       <input
-                        type="number"
+                        type="text"
                         name="month"
                         id="exp-month"
                         placeholder="MM"
+                        maxlength="2"
                       />
+                      <p class="error exp-month-error"></p>
                       <input
-                        type="number"
+                        type="text"
                         name="year"
                         id="exp-year"
                         placeholder="YY"
+                        maxlength="2"
                       />
+                      <p class="error exp-year-error">asdassd</p>
                     </div>
                   </div>
                   <div class="cvc-wrap">
                     <label for="cvcnumber">cvc</label>
                     <input
-                      type="number"
+                      type="text"
                       name="cvcnumber"
                       id="cvcnumber"
                       placeholder="e.g. 123"
+                      maxlength="3"
                     />
+                    <p class="error cvc-error"></p>
                   </div>
                 </div>
                 <button type="submit" class="submit-btn">Confirm</button>
               </div>
             </form>
           </div>
+          <div class="thank-you-wrap">
+            <img src="images/icon-complete.svg" alt="" />
+            <h2>Thank You!</h2>
+            <p class="success-msg">We've added your card details</p>
+            <button class="continue-btn">Continue</button>
+          </div>
         </div>
       </section>
     </main>
+    <script src="app.js"></script>
   </body>
 </html>
