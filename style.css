@@ -78,7 +78,7 @@ body {
   position: absolute;
   top: 135px;
   left: 25px;
-  letter-spacing: 7px;
+  letter-spacing: 5.5px;
   color: var(--White);
   font-weight: 500;
 }
@@ -131,7 +131,13 @@ label {
 }
 
 .number-label {
-  margin-top: 35px;
+  margin-top: 45px;
+}
+
+.card-name-num-wrap {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 #cardholdername,
@@ -152,19 +158,24 @@ input::placeholder {
   color: var(--Lightgrayishviolet);
 }
 
-input:focus-visible {
-  border-color: hsl(278, 69%, 19%);
-}
-
 .wrap {
   margin-top: 35px;
   display: flex;
   align-items: center;
 }
 
+.exp-date {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-input {
+  position: relative;
+}
+
 #exp-month,
 #exp-year {
-  margin-top: 10px;
   margin-right: 6px;
   width: 95px;
   padding: 14px;
@@ -180,14 +191,15 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
   margin-left: 20px;
 }
 
 #cvcnumber {
   width: 175px;
   padding: 14px;
-  border-radius: 10px;
   border: 1px solid var(--Lightgrayishviolet);
+  border-radius: 10px;
   font-size: 1em;
   font-weight: 600;
   letter-spacing: 1px;
@@ -200,11 +212,27 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+#cardholdername:focus,
+#cardnumber:focus,
+#exp-month:focus,
+#exp-year:focus,
+#cvcnumber:focus {
+  border: 1px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    hsla(249, 99%, 64%, 1),
+    hsla(278, 93%, 30%, 1)
+  );
+  border-image-slice: 1;
+  border-radius: 10px;
+  outline: none;
+}
+
 .submit-btn {
   align-self: center;
-  margin-top: 30px;
+  margin-top: 45px;
   width: 100%;
-  padding: 16px;
+  padding: 18px;
   letter-spacing: 1px;
   font-size: 1em;
   border-radius: 10px;
@@ -213,6 +241,90 @@ input::-webkit-inner-spin-button {
   color: var(--White);
   font-weight: 500;
   cursor: pointer;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.163);
+}
+
+.error {
+  position: absolute;
+  font-size: 0.8em;
+  color: var(--Red);
+  display: none;
+  font-weight: 500;
+}
+
+.name-error {
+  top: 78px;
+  left: 5px;
+}
+
+.card-number-error {
+  top: 120px;
+  left: 5px;
+}
+
+.exp-month-error {
+  top: 50px;
+  left: 5px;
+}
+
+.exp-year-error {
+  left: 110px;
+}
+
+.cvc-error {
+  top: 75px;
+  left: 5px;
+}
+
+.show-error {
+  display: block;
+}
+
+.thank-you-wrap {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.thank-you-wrap > img {
+  width: 80px;
+}
+
+.thank-you-wrap > h2 {
+  margin-top: 15px;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  color: var(--Verydarkviolet);
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+.success-msg {
+  color: var(--Darkgrayishviolet);
+  font-size: 1.1em;
+}
+
+.continue-btn {
+  width: 375px;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--Verydarkviolet);
+  color: var(--White);
+  font-size: 1em;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.show-success {
+  display: flex;
+}
+
+.hide-form {
+  display: none;
 }
 
 @media screen and (max-width: 2600px) and (min-width: 2000px) {
@@ -256,11 +368,19 @@ input::-webkit-inner-spin-button {
   .card-detail-form {
     transform: scale(0.88);
   }
+
+  .thank-you-wrap > h2 {
+    font-size: 1.5em;
+  }
+
+  .continue-btn {
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 1190px) {
   body {
-    height: 100%;
+    height: 100vh;
   }
   .bg-desktop {
     display: none;
@@ -302,85 +422,92 @@ input::-webkit-inner-spin-button {
   .card-detail-form {
     grid-area: 1 / 1 / 4 / 3;
     position: relative;
-    top: 15vh;
+    top: 13vh;
     margin: 0 auto;
     width: max-content;
     transform: scale(0.92);
   }
-}
-
-@media screen and (max-width: 1114px) and (orientation: landscape) {
-  .container {
-    height: 80vh;
+  .thank-you-wrap {
+    position: relative;
+    top: 15vh;
   }
-
-  .card-detail-form {
-    top: 20vh;
+  .continue-btn {
+    width: 375px;
   }
 }
 
 @media screen and (max-width: 850px) {
-  .bg-mobile > img {
-    height: 350px;
-  }
   .card-wrap {
-    top: -3vh;
-    transform: translate(-50%) scale(0.9);
-  }
-
-  .card-back {
-    left: 80px;
+    left: 35%;
+    transform: translate(-40%) scale(0.87);
   }
 
   .card-detail-form {
-    grid-area: 1 / 1 / 4 / 3;
-    position: relative;
-    top: 15vh;
+    transform: scale(0.95);
   }
 
-  .card-detail-form {
-    transform: scale(1);
+  .error {
+    font-size: 0.6em;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 520px) {
   .bg-mobile > img {
-    height: 350px;
+    height: 250px;
   }
+
   .card-wrap {
-    transform: translate(-50%) scale(0.85);
-  }
-
-  .card-back {
-    left: 80px;
-  }
-
-  .card-detail-form {
-    grid-area: 1 / 1 / 4 / 3;
-    position: relative;
-    top: 8vh;
-  }
-
-  .card-detail-form {
-    transform: scale(0.9);
+    left: -5px;
+    transform: translate(0%) scale(0.8);
   }
 }
 
 @media screen and (max-width: 428px) {
-  .bg-mobile > img {
-    height: 300px;
+  .card-wrap {
+    left: -45px;
+    top: -45px;
+    transform: translate(0%) scale(0.7);
+  }
+
+  #cardholdername,
+  #cardnumber {
     width: 100%;
   }
+
+  #exp-month,
+  #exp-year {
+    width: 90px;
+  }
+  .cvc-wrap {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 390px) {
   .card-wrap {
-    left: 30%;
-    transform: translate(-35%) scale(0.8);
+    left: -68px;
+    top: -45px;
+    transform: translate(0%) scale(0.63);
   }
 
-  .card-back {
-    left: 80px;
+  #cardholdername,
+  #cardnumber {
+    width: 100%;
   }
 
-  .card-detail-form {
-    top: 12vh;
+  .submit-btn {
+    width: 100%;
+  }
+
+  #exp-month,
+  #exp-year {
+    width: 70px;
+  }
+
+  label {
+    font-size: 0.65em;
+  }
+  .continue-btn {
+    width: 90%;
   }
 }
